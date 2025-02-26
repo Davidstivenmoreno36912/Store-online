@@ -1,9 +1,4 @@
-<!-- product-list.component.html -->
-<div class="container">
-  <h2 class="titulo"> SALUD VITAL </h2>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let product of products">
-      <app-product-card [product]="product"></app-product-card>
-    </div>
-  </div>
+
+<div class="product-list">
+  <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { CartService } from './../services/cart.service';
 import { Router } from '@angular/router';
 
 declare var paypal: any;
@@ -10,7 +10,6 @@ declare var paypal: any;
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit, AfterViewInit {
-
   cartItems: any[] = [];
   totalAmount: number = 0;
 
@@ -44,7 +43,7 @@ export class CartComponent implements OnInit, AfterViewInit {
   }
 
   removeItem(item: any) {
-    this.cartItems = this.cartItems.filter(i => i !== item);
+    this.cartItems = this.cartItems.filter(i => i.id !== item.id);
     this.totalAmount = this.calculateTotalAmount();
   }
 
@@ -54,10 +53,9 @@ export class CartComponent implements OnInit, AfterViewInit {
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: Math.round(this.totalAmount).toString(), // Redondeado para evitar errores con PayPal
+              value: this.totalAmount.toFixed(2),
               currency_code: 'USD'
-            },
-            description: 'Compra de aceites esenciales'
+            }
           }]
         });
       },

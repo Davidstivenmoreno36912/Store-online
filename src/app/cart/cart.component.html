@@ -10,7 +10,6 @@
       <p>Precio: {{ item.price | currency }}</p>
     </div>
 
-    <!-- Botones para modificar cantidad -->
     <div class="cart-actions">
       <button class="quantity-btn" (click)="decreaseQuantity(item)">-</button>
       <span>{{ item.quantity }}</span>
@@ -19,11 +18,9 @@
     </div>
   </div>
 
-  <!-- Mostrar el total del carrito -->
   <div class="cart-total">
     <h4>Total: {{ totalAmount | currency }}</h4>
   </div>
 
-  <!-- Botón de PayPal -->
   <div id="paypal-button-container"></div>
 </div>

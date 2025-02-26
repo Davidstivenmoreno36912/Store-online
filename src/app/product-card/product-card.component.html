@@ -1,10 +1,21 @@
-<div class="card">
-  <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.name }}">
-  <div class="card-body">
-    <h5 class="card-title">{{ product.name }}</h5>
-    <p class="card-text">{{ product.description }}</p>
-    <p class="card-text">Precio: {{ product.price | currency }}</p>
-    <button class="btn btn-primary" (click)="addToCart()">Agregar al carrito</button>
+<div class="flip-card">
+  <div class="flip-card-inner">
     
+    <!-- Parte frontal -->
+    <div class="flip-card-front">
+      <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-price">{{ product.price | currency }}</p>
+      </div>
+    </div>
+
+    <!-- Parte trasera -->
+    <div class="flip-card-back">
+      <h5>{{ product.name }}</h5>
+      <p class="description">{{ product.description }}</p>
+      <button class="btn btn-add-cart" (click)="addToCart()">🛒 Agregar al carrito</button>
+    </div>
+
   </div>
 </div>
